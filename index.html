@@ -123,6 +123,22 @@
       myOutput += `<p><a href="index.html">CLEAR</a></p>`; 
       myOutput += `</div>`;
       document.querySelector("#output").innerHTML = myOutput;
+      str = "the quick brown fox";
+
+str = titleCase(str);
+
+      function titleCase(str){
+        str = str.split(" ");
+
+    for(let x=0;x<str.length;x++){
+      str[x] = str[x].charAt(0).toUpperCase(0) + str[x].slice(1).toLowerCase(0);
+    }
+
+    return str.join(" ");
+}   
+
+
+
     }
   </script>  
  </body>
