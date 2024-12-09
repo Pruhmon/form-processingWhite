@@ -14,8 +14,7 @@
      <h1 class="page-header">Form Processing</h1>
         <nav class="topnav" id="myTopnav">
             <a href="index.html" class="active">Home</a>
-            <a href="https://www.youtube.com/watch?v=apPsjYs6HmE">Funny Video</a>
-            <a href="https://tenor.com/view/ditto-pokemon-anime-happy-dance-gif-16360307322388566092">Dancy dance</a>
+            <a href="https://n1ji.github.io/portal">Portal</a>
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
         </nav>
      </header>
@@ -84,7 +83,14 @@
             <input type="checkbox" name="Interested_In" value="Website">Website<br>
             <input type="checkbox" name="Interested_In" value="Website">Website<br>
           </label>
+        </fieldset>
       </div>
+
+      <div>
+        <label for="Note">Note</label><br>
+        <textarea id="Note" name="Note" placeholder="Write special delivery instructions here:" rows="6" cols="52"></textarea>
+      </div>
+
       <div>
         <input type="submit">
       </div>
@@ -93,14 +99,14 @@
   </div>
 
     <footer>
-      <p>
+      <p><small><a href="https://tenor.com/view/ditto-pokemon-anime-happy-dance-gif-16360307322388566092" target="_blank" alt="Me when I complete 1st quarter of Year Up United with a 4.0">&copy;</a> 2024-<span id="this-year"></span> by 
           Praman White, All Rights Reserved - 
           <a id="html-checker" href="#" target="_blank">Check HTML</a> - 
           <a id="css-checker" href="#" target="_blank">Check CSS</a></small>
       </p>
       <p><small>Contact me: 
           <a id="discord" href="https://discord.com/users/749851448220844083" target="_blank">Discord</a> -
-          <a id="email" href="Pruhmon@gmail.com" target="_blank">Email Me</a> - 
+          <a id="email" href="pruhmon@gmail.com" target="_blank">Email Me</a> - 
           <a id="email" href="https://www.instagram.com/pruhmon/" target="_blank">Instagram</a></small>
       </p>
     </footer>
@@ -109,6 +115,7 @@
 
   <script src="js/main.js"></script> 
   <script>
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
@@ -117,29 +124,34 @@
 
       urlParams.forEach(function(value,key){
 
+        switch(key){
+          case "First_Name":
+          case "Last_Name":
+          case "City":
+          case "Address":
+            value = titleCase(value);
+          break;
+        }
+
         key = key.split("_").join(" ");
         myOutput += `<p>${key}: ${value}</p>`;
       });
       myOutput += `<p><a href="index.html">CLEAR</a></p>`; 
       myOutput += `</div>`;
       document.querySelector("#output").innerHTML = myOutput;
-      str = "the quick brown fox";
 
-str = titleCase(str);
+    }//end of if statement to see if there is anything on the querystring if not does nothing
 
-      function titleCase(str){
-        str = str.split(" ");
+    function titleCase(str){
+      str = str.split(" ");
 
-    for(let x=0;x<str.length;x++){
-      str[x] = str[x].charAt(0).toUpperCase(0) + str[x].slice(1).toLowerCase(0);
-    }
-
-    return str.join(" ");
-}   
-
-
-
-    }
-  </script>  
+      for(let x=0; x<str.length;x++){
+          str[x] = str[x].charAt(0).toUpperCase() + str[x].slice(1).toLowerCase();
+      
+      }
+      return str.join(" ");
+    
+    }//end of titleCase
+  </script> 
  </body>
-</html> 
+</html>
